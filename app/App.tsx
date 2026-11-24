@@ -24,6 +24,7 @@ export default function App() {
   }, []);
 
   const handleSubmit = async () => {
+    setError('');
     if (!name || !surname || !age) {
       setError('Please fill in all fields');
       return;

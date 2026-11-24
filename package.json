@@ -1,0 +1,17 @@
+{
+  "name": "people-crud",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n api,app -c blue,green \"npm:api\" \"npm:app\"",
+    "dev:web": "concurrently -n api,app -c blue,green \"npm:api\" \"npm:app:web\"",
+    "api": "dotnet run --project api --urls http://0.0.0.0:5044",
+    "app": "npm --prefix app start",
+    "app:web": "npm --prefix app run web",
+    "install:all": "npm install && npm --prefix app install",
+    "android:reverse": "adb reverse tcp:5044 tcp:5044",
+    "dev:android": "npm run android:reverse && concurrently -n api,app -c blue,green \"npm:api\" \"npm --prefix app run android\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
